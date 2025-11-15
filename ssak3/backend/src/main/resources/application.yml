@@ -1,0 +1,11 @@
+server:
+  port: ${SERVER_PORT:8080}
+
+kakao:
+  # 카카오 OAuth 설정은 환경변수 또는 .env 파일에서 로드합니다.
+  # 실제 값은 ssak3/backend/.env 파일에 설정하세요.
+  client-id: ${KAKAO_CLIENT_ID:}
+  client-secret: ${KAKAO_CLIENT_SECRET:}
+  redirect-uri: ${KAKAO_REDIRECT_URI:http://localhost:3000/auth/kakao/callback}
+  token-uri: https://kauth.kakao.com/oauth/token
+  user-info-uri: https://kapi.kakao.com/v2/user/me

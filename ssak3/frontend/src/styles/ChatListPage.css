@@ -1,0 +1,157 @@
+/* ===== 채팅 목록 페이지 전체 ===== */
+.chat-shell {
+  min-height: 100vh;
+  background: #fafafa;
+  display: flex;
+  justify-content: center;
+}
+
+.chat-frame {
+  width: 100%;
+  max-width: 390px;
+  background: #fafafa;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== 상단바 ===== */
+.chat-topbar {
+  position: sticky;
+  top: 0;
+  height: 56px;
+  background: #fff;
+  border-bottom: 1px solid #ededed;
+  display: grid;
+  grid-template-columns: 56px 1fr 56px;
+  align-items: center;
+  z-index: 10;
+}
+
+.chat-topbar h1 {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: #2b0c0b;
+}
+
+.back-btn {
+  margin-left: 8px;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background: transparent;
+  font-size: 22px;
+  color: #2b0c0b;
+  cursor: pointer;
+}
+
+/* ===== 본문 ===== */
+.chat-main {
+  flex: 1;
+  padding-bottom: 88px; /* 하단 네비게이션 여유 */
+}
+
+.chat-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ✅ 채팅 아이템: [아바타] [내용] [오른쪽메타] */
+.chat-item {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  background: #fff;
+  padding: 12px 16px;
+  border-bottom: 1px solid #ededed;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.chat-item:active {
+  background: #f7f7f7;
+}
+
+/* ===== 왼쪽 아바타 ===== */
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background: #d9d9d9;
+  flex-shrink: 0;
+}
+
+/* ===== 중앙 내용 ===== */
+.chat-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0; /* ellipsis 방지용 */
+}
+
+.chat-row-1 {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.nickname {
+  font-weight: 700;
+  font-size: 14px;
+  color: #2b0c0b;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.last-message {
+  font-size: 13px;
+  color: #7b6e6e;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.last-message.unread {
+  color: #2b0c0b;
+  font-weight: 500;
+}
+
+/* ===== 오른쪽 메타 (날짜 + 배지) ===== */
+.right-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px; /* 날짜와 배지 간격 */
+  min-width: 64px; /* 폭 흔들림 방지 */
+}
+
+.date {
+  font-size: 12px;
+  color: #00000080;
+}
+
+/* ===== 배지 ===== */
+.badge {
+  min-width: 18px;
+  height: 18px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: #f72623;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== 반응형 보정 ===== */
+@media (max-height: 700px) {
+  .chat-main {
+    padding-bottom: 100px;
+  }
+}

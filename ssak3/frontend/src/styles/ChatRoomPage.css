@@ -1,0 +1,216 @@
+/* 프레임 */
+.room-shell {
+  min-height: 100vh;
+  background: #fafafa;
+  display: flex;
+  justify-content: center;
+}
+.room-frame {
+  width: 100%;
+  max-width: 390px;
+  display: grid;
+  grid-template-rows: 56px 80px 1fr auto auto; /* 상단/상품/본문/배너/입력바 */
+  background: #fafafa;
+}
+
+/* 상단바 */
+.room-topbar {
+  display: grid;
+  grid-template-columns: 56px 1fr 56px;
+  align-items: center;
+  background: #fff;
+  border-bottom: 1px solid #ededed;
+  z-index: 2;
+}
+.top-btn {
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: 0;
+  font-size: 22px;
+  color: #2b0c0b;
+}
+.room-title {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: #2b0c0b;
+}
+
+/* 상품 카드 */
+.product-card {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 12px;
+  align-items: center;
+  background: #fff;
+  padding: 10px 14px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+.thumb {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  background: #e8e5e3 center/cover no-repeat;
+}
+.prod-texts { display: flex; flex-direction: column; gap: 4px; }
+.prod-sub   { font-size: 14px; color: #7a6f6f; }
+.prod-price { font-size: 20px; font-weight: 700; color: #2b0c0b; }
+
+/* 메시지 목록 (여기만 스크롤) */
+.room-main {
+  overflow-y: auto;
+  background: #fafafa;
+  padding: 10px 12px 16px;  /* 하단 padding-bottom은 인라인 스타일로 여유 추가 */
+}
+.empty-hint { color:#9a8e88; font-size:13px; text-align:center; margin-top: 24px; }
+.date-divider {
+  font-size: 12px;
+  color: #7a6f6f;
+  text-align: center;
+  margin: 8px auto;
+  background: #f0eeed;
+  border-radius: 12px;
+  padding: 2px 10px;
+}
+
+/* 버블(조금 작게) */
+.msg-row { display: flex; flex-direction: column; margin: 5px 0; }
+.msg-row.peer { align-items: flex-start; }
+.msg-row.mine { align-items: flex-end; }
+.bubble {
+  max-width: 70%;
+  padding: 8px 10px;
+  font-size: 13px;
+  border-radius: 14px;
+  line-height: 1.35;
+}
+.peer .bubble { background: #fff; border: 1px solid #2b0c0b; border-radius: 14px 14px 14px 4px; }
+.mine .bubble { background: #2b0c0b; color: #fff; border-radius: 14px 14px 4px 14px; }
+.media { width: 200px; border-radius: 12px; display:block; }
+
+/* 시간/읽음 */
+.meta { display: flex; gap: 6px; font-size: 10.5px; color: #a9a1a1; margin-top: 2px; }
+.meta .fail { color: #f72623; }
+
+/* 경고 배너 (고정) */
+.safe-banner {
+  position: sticky;
+  bottom: 130px;  /* 72(하단탭) + ~56(입력바) 여유 */
+  background: #fff;
+  border-top: 1px solid #ededed;
+  color: #7b6e6e;
+  font-size: 12px;
+  padding: 10px 12px;
+  z-index: 2;
+}
+
+/* 입력바 (고정) */
+.input-bar {
+  position: sticky;
+  bottom: 72px; /* 하단 탭 높이 */
+  background: #fff;
+  border-top: 1px solid #ededed;
+  display: grid;
+  grid-template-columns: 1fr 48px; /* 입력창 / 전송버튼 */
+  gap: 8px;
+  align-items: center;
+  padding: 10px 12px;
+  z-index: 3;
+}
+
+/* 입력창 + 내부 카메라 */
+.input-wrap {
+  position: relative;
+  height: 42px;
+  border-radius: 999px;
+  background: #eee;
+  display: flex;
+  align-items: center;
+  padding-right: 40px; /* 내부 아이콘 자리 */
+}
+.msg-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 0 12px;
+  font-size: 15px;
+  color: #2b0c0b;
+}
+.msg-input::placeholder { color: #bfbfbf; }
+
+.icon-btn.inside {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+}
+.icon-img { width: 22px; height: 22px; }
+
+/* 전송 버튼 */
+.send-btn {
+  width: 48px;
+  height: 36px;
+  border-radius: 10px;
+  border: 0;
+  background: #b1a6a6;
+  display: grid;
+  place-items: center;
+}
+.send-btn:not(.disabled) { background: #2b0c0b; }
+.send-btn.disabled { opacity: .45; cursor: default; }
+.send-img { width: 24px; height: 24px; }
+
+/* 바텀시트 공통 */
+.sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.25);
+  display:flex;
+  align-items: flex-start;
+  padding-top: calc(100vh - 250px);
+  justify-content:center;
+  z-index: 1200;
+}
+.bottom-sheet {
+  width: 92%;                  /* ← 100% 대신 적당히 여백 있는 비율 */
+  max-width: 360px;            /* ← 채팅 프레임보다 살짝 작게 */
+  margin: 0 auto;              /* ← 중앙 정렬 */
+  background:#fff;
+  border-radius: 16px;
+  padding: 10px 12px 8px;
+  box-shadow: 0 0 20px rgba(0,0,0,.12);
+}
+
+.sheet-item {
+  width:100%;
+  height:48px;
+  border:0;
+  border-radius:12px;
+  margin: 6px 0;
+  background:#f7f5f4;
+  font-size:15px;
+  color:#2b0c0b;
+  font-weight:600;
+}
+.sheet-item.close { background:#ece9e7; }
+.sheet-item.danger { background:#ffeaea; color:#c10000; }
+
+/* ✅ 첨부 시트용 보조 스타일 */
+.sheet-group {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 6px 0;
+}
+.sheet-group .sheet-item {
+  margin: 0;
+  border-radius: 0;
+}
+.sheet-divider {
+  height: 1px;
+  background: #eee;
+}
