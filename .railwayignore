@@ -1,0 +1,9 @@
+# Railway가 Railpack 대신 Dockerfile을 사용하도록 함
+node_modules/
+.git/
+.env
+*.md
+DOCKER_DEPLOYMENT.md
+FREE_DEPLOYMENT_GUIDE.md
+RAILWAY_DEPLOYMENT.md
+
